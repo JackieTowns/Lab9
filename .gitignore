@@ -1,0 +1,7 @@
+bin
+*.class
+.project
+.classpath
+.settings
+shoppingList.java
+shoppingList2.java
