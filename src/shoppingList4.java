@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
 	
 
-public class shoppingList3 {
+public class shoppingList4 {
 	
 		public static void main(String[] args) {
 
@@ -44,9 +43,11 @@ public class shoppingList3 {
 			keepTrack.put("honeydew", 3.49);
 			
 
-			boolean valid = true;
-			String enterItem = "";
-			double price = 0.0; 
+		// boolean valid = true;
+
+		String enterItem = "";
+		double price = 0.0;
+		String userInput;
 			
 		do {
 			
@@ -90,65 +91,32 @@ public class shoppingList3 {
 					 price = enterQuan*keepTrack.get(enterItem);   
 
 					scnr.nextLine();
-					valid = false;
+				// valid = false;
 
 				}
 
 				System.out.println("Do you want to order anything else?");
-				String yesNo = scnr.nextLine();
+			userInput = scnr.nextLine();
 
-				if (yesNo.equalsIgnoreCase("n"))// {
-					valid = false;
-				// } else
-				// continue;
-			
+			if (userInput.equalsIgnoreCase("n")) {
+				break;
+			}
 
-			} while (valid);
+		} while (userInput.equalsIgnoreCase("y"));
 			
 
 		// I know that this works since the price and quanity is correct...
 			System.out.println(price);
 			System.out.println(keepTrack.get(enterItem));
 
-					
-					for (Map.Entry<String, Double> priceLists : keepTrack.entrySet()) {
-				System.out.println("Key: " + ((Entry<String, Double>) keepTrack).getKey() + " "
-						+ ((Entry<String, Double>) keepTrack).getValue());
-					}
-
-		// Method for Average Cost
-
-			// getAverageCost(the prices of items);
-			// System.out.println(getAverageCost(items));
-					
+		// But now it's overwriting what I enter first...how do I save as a list to
+		// print out?
+			
+			for (int i = 0; i < keepTrack.size(); i++) {
+			System.out.println(enterItem + "   " + price);
+			}
 
 			scnr.close();
-
-		}
-
-		public static double getAverageCost(double aver) {
-			// (number1 + number2) / 2.0;
-
-			return aver;
-
-		}
-
-	/*
-	 * public static int gethighestLowest(int highLow) {
-	 * 
-	 * for (int i = 0; i < price.length; i++) { if (price[i] > max) max = pric[i];
-	 * if (price[i] < min) min = price[i]; }
-	 * System.out.println("Maxium Number of the Array is: " + max);
-	 * System.out.println("Mininum Number of the Array is " + min);
-	 * 
-	 * return highLow;
-	 * 
-	 * }
-	 */
-
-		public static int lowest(int low) {
-
-			return low;
 
 		}
 
