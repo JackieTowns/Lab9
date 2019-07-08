@@ -87,9 +87,8 @@ public class shoppingList4 {
 					}
 
 					System.out.println("How many do you want to order?");
-					int enterQuan = scnr.nextInt();
+				int enterQuan = scnr.nextInt();
 					 price = enterQuan*keepTrack.get(enterItem);   
-
 					scnr.nextLine();
 				// valid = false;
 
@@ -103,22 +102,55 @@ public class shoppingList4 {
 			}
 
 		} while (userInput.equalsIgnoreCase("y"));
-			
 
-		// I know that this works since the price and quanity is correct...
-			System.out.println(price);
-			System.out.println(keepTrack.get(enterItem));
+		// Use an empty arrayList to add the items. One for prices and one for items.
+		// arrayListname.add(UserInput).
+		// arraylistname.add(price)
+		// for arraylistname.size(or length) print them out
 
-		// But now it's overwriting what I enter first...how do I save as a list to
-		// print out?
-			
-			for (int i = 0; i < keepTrack.size(); i++) {
-			System.out.println(enterItem + "   " + price);
-			}
+		ArrayList<String> itemsOrdered = new ArrayList<>();
+		ArrayList<Double> pricesOrdered = new ArrayList<>();
+		itemsOrdered.add(enterItem);
+		pricesOrdered.add(price);
+
+		for (int i = 0; i < itemsOrdered.size(); i++) {
+			System.out.println(itemsOrdered.size() + " " + pricesOrdered());
+		}
+
+		System.out.println("Total: " + pricesOrdered);
+		getAverageCost();
+
+		/*
+		 * // I know that this works since the price and quanity is correct...
+		 * System.out.println(price); System.out.println(keepTrack.get(enterItem));
+		 * 
+		 * scnr.close();
+		 * 
+		 * // But now it's overwriting what I enter first...how do I save as a list to
+		 * // print out?
+		 * 
+		 * for (int i = 0; i < keepTrack.size(); i++) { System.out.println(enterItem +
+		 * "   " + price); }
+		 */
 
 			scnr.close();
 
 		}
+
+	public static void getAverageCost() {
+		return Total / 2;
+	}
+
+	public static void getMinMax(double min, double max) {
+		if (pricesOrdered[i] > max)
+			max = pricesOrdered[i]; 
+		if (pricesOrdered[i] < min)
+		    min= pricesOrdered[i]; 
+		
+		System.out.println("Maxium Number of the Array is: " + max);
+		System.out.println("Mininum Number of the Array is " + min);
+		
+	}return minMax;
 
 	}
 
