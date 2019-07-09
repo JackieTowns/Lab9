@@ -46,7 +46,11 @@ public class shoppingList5 {
 
 		String enterItem = "";
 		double price = 0.0;
+		int quantity = 0;
 		String userInput;
+
+		ArrayList<String> itemsOrdered = new ArrayList<>();
+		ArrayList<Double> pricesOrdered = new ArrayList<>();
 			
 		do {
 			
@@ -76,6 +80,8 @@ public class shoppingList5 {
 
 					if (keepTrack.containsKey(enterItem)) {
 						System.out.println(keepTrack.get(enterItem));
+					itemsOrdered.add(enterItem);
+					pricesOrdered.add(keepTrack.get(enterItem));
 						itemValid = false;
 
 					} else {
@@ -86,12 +92,13 @@ public class shoppingList5 {
 
 					System.out.println("How many do you want to order?");
 				int enterQuan = scnr.nextInt();
-					 price = enterQuan*keepTrack.get(enterItem);   
+				quantity = quantity + enterQuan;
+				price = price + enterQuan * keepTrack.get(enterItem);
 					scnr.nextLine();
 
 				}
 
-				System.out.println("Do you want to order anything else?");
+			System.out.println("Do you want to order anything else?(y/n)");
 			userInput = scnr.nextLine();
 
 			if (userInput.equalsIgnoreCase("n")) {
@@ -100,41 +107,68 @@ public class shoppingList5 {
 
 		} while (userInput.equalsIgnoreCase("y"));
 
-		// Use an empty arrayList to add the items. One for prices and one for items.
-		// arrayListname.add(UserInput).
-		// arraylistname.add(price)
-		// for arraylistname.size(or length) print them out
 
-		ArrayList<String> itemsOrdered = new ArrayList<>();
-		ArrayList<Double> pricesOrdered = new ArrayList<>();
-		itemsOrdered.add(enterItem);
-		pricesOrdered.add(price);
-
+		System.out.println("You ordered:");
 		for (int i = 0; i < itemsOrdered.size(); i++) {
-			System.out.println(itemsOrdered.size());
+			System.out.println(itemsOrdered.get(i));
 		}
 
 
-		System.out.println("Total: " + pricesOrdered);
-		// getAverageCost();
+		System.out.println("Total: " + price);
 
+		System.out.println();
+
+		double min = getMin(pricesOrdered);
+		double max = getMax(pricesOrdered);
+		double avg = getAverage(pricesOrdered, quantity);
+
+		System.out.println("Lowest cost item: " + min);
+		System.out.println("Highest cost item: " + max);
+		System.out.println("Average cost item: " + avg);
 			scnr.close();
 
 		}
 
-	/*
-	 * public static void getAverageCost() { return Total / 2; }
-	 * 
-	 * public static void getMinMax(double min, double max) { if (pricesOrdered[i] >
-	 * max) max = pricesOrdered[i]; if (pricesOrdered[i] < min) min=
-	 * pricesOrdered[i];
-	 * 
-	 * System.out.println("Maxium Number of the Array is: " + max);
-	 * System.out.println("Mininum Number of the Array is " + min);
-	 * 
-	 * }return minMax;
-	 */
+	public static double getAverage(ArrayList<Double> pricesOrdered, int quantity) {
+
+		double getAverage = 0;
+
+		for(double item : pricesOrdered) {
+			getAverage = getAverage + item; 
+		}
+		
+
+		return getAverage/quantity;
 	}
+
+	public static double getMin(ArrayList<Double> pricesOrdered) {
+
+		double minPrice = pricesOrdered.get(0);
+
+		for (double item : pricesOrdered) {
+
+			if (item < minPrice) {
+				minPrice = item;
+		}
+
+		}
+
+		return minPrice;
+	}
+
+	public static double getMax(ArrayList<Double> pricesOrdered) {
+
+		double maxPrice = pricesOrdered.get(0);
+
+		for(double item : pricesOrdered) { 
+			if (item > maxPrice) {
+				maxPrice = item;
+			}
+		}
+		return maxPrice;
+	}
+
+}
 
 
 
